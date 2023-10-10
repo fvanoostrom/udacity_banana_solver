@@ -6,12 +6,15 @@
 
 ### Introduction
 
-Within this project we will develop an agent that will navigate and pick up bananas within a square arena. This project is part of the Udacity Deep learning Program.
-![]
 
 ### Project Details
 
-The README describes the the project environment details (i.e., the state and action spaces, and when the environment is considered solved).
+
+Within this project we will develop an agent that will navigate and pick up bananas within a square arena. This project is part of the Udacity Deep learning Program and is an adapted version of the Unity  [ML-Agents repository](https://github.com/Unity-Technologies/ml-agents).
+
+In the image below a trained agent within the environment is shown. The agent has four actions (forward, backward, turn left, turn right) and receives 37 inputs ("the state space is 37"), such as the velocity and ray-based perception of objects. The agent should pick up yellow bananas, and avoid picking up 
+
+![Trained Agent][image1]
 
 ### Getting Started
 
@@ -22,7 +25,6 @@ The README has instructions for installing dependencies or downloading needed fi
 The README describes how to run the code in the repository, to train the agent. For additional resources on creating READMEs or using Markdown, see here and here.
 
 
-![Trained Agent][image1]
 
 A reward of +1 is provided for collecting a yellow banana, and a reward of -1 is provided for collecting a blue banana.  Thus, the goal of your agent is to collect as many yellow bananas as possible while avoiding blue bananas.  
 
