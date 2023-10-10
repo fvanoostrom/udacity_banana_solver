@@ -6,7 +6,21 @@
 
 ### Introduction
 
-For this project, you will train an agent to navigate (and collect bananas!) in a large, square world.  
+Within this project we will develop an agent that will navigate and pick up bananas within a square arena. This project is part of the Udacity Deep learning Program.
+![]
+
+### Project Details
+
+The README describes the the project environment details (i.e., the state and action spaces, and when the environment is considered solved).
+
+### Getting Started
+
+The README has instructions for installing dependencies or downloading needed files.
+
+### Instructions
+
+The README describes how to run the code in the repository, to train the agent. For additional resources on creating READMEs or using Markdown, see here and here.
+
 
 ![Trained Agent][image1]
 
