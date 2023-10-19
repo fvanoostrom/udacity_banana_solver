@@ -4,14 +4,7 @@ from collections import deque
 import matplotlib.pyplot as plt
 
 from base_agent import BaseAgent
-from banana_agent import Agent
-
-
-
-
-#watch the trained agent
-
-
+from dqn_agent import DQNAgent
 
 class RLEnvironment(UnityEnvironment):
     """Takes care of the Reinforcement Learning Environment"""
@@ -58,10 +51,11 @@ class RLEnvironment(UnityEnvironment):
         score = 0
         for t in range(max_t):
             action = agent.act(state, eps)
-            self.env_info = env.step(action)[self.brain_name]        # send the action to the environment
+            self.brain_info = self.step(action)[self.brain_name]        # send the action to the environment
             next_state = self.brain_info.vector_observations[0]   # get the next state
-            reward = self.env_info.rewards[0]                   # get the reward
-            done = self.env_info.local_done[0]                  # see if episode has finished
+            reward = self.brain_info.rewards[0]                   # get the reward
+            done = self.brain_info.local_done[0]                  # see if episode has finished
+            agent.step(state, action, reward, next_state, done)
             score += reward                                # update the score
             state = next_state                             # roll over the state to next time step
             if done:                                       # exit loop if episode finished
@@ -75,7 +69,8 @@ class RLEnvironment(UnityEnvironment):
         
         Params
         ======
-            n_episodes (int): maximum number of training episodes
+            agent (agent): agent to use
+            max_episodes (int): maximum number of training episodes
             max_t (int): maximum number of timesteps per episode
             eps_start (float): starting value of epsilon, for epsilon-greedy action selection
             eps_end (float): minimum value of epsilon
@@ -111,7 +106,7 @@ if __name__ == "__main__":
     score = env.run_episode(agent, 20)
     print("Score: {}".format(score))
     
-    agent = Agent(state_size=37, action_size=4, seed=0)
+    agent = DQNAgent(state_size=37, action_size=4, seed=0)
     scores = env.train(agent, 10, 10, target_score = 5.0)
 
     # plot the scores

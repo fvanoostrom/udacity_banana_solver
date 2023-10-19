@@ -17,7 +17,7 @@ UPDATE_EVERY = 4        # how often to update the network
 
 device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 
-class Agent():
+class DQNAgent():
     """Interacts with and learns from the environment."""
 
     def __init__(self, state_size, action_size, seed):
@@ -71,7 +71,7 @@ class Agent():
 
         # Epsilon-greedy action selection
         if random.random() > eps:
-            return int(np.argmax(action_values.cpu().data.numpy()))
+            return np.argmax(action_values.cpu().data.numpy())
         else:
             return int(random.choice(np.arange(self.action_size)))
 
@@ -115,12 +115,6 @@ class Agent():
         """
         for target_param, local_param in zip(target_model.parameters(), local_model.parameters()):
             target_param.data.copy_(tau*local_param.data + (1.0-tau)*target_param.data)
-            
-    def save(self):
-        torch.save(self.qnetwork_local.state_dict(), 'checkpoint.pth')
-            
-    def load(self):
-        self.qnetwork_local.load_state_dict(torch.load('checkpoint.pth'))
 
 
 class ReplayBuffer:

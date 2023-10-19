@@ -2,11 +2,13 @@ import numpy as np
 import random
 from collections import namedtuple, deque
 
-from model import QNetwork
+from dnn_model import QNetwork
 
 import torch
 import torch.nn.functional as F
 import torch.optim as optim
+
+from base_agent import BaseAgent
 
 BUFFER_SIZE = int(1e5)  # replay buffer size
 BATCH_SIZE = 64         # minibatch size
@@ -17,7 +19,7 @@ UPDATE_EVERY = 4        # how often to update the network
 
 device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 
-class Agent():
+class DQNAgent(BaseAgent):
     """Interacts with and learns from the environment."""
 
     def __init__(self, state_size, action_size, seed):
@@ -29,8 +31,8 @@ class Agent():
             action_size (int): dimension of each action
             seed (int): random seed
         """
-        self.state_size = state_size
-        self.action_size = action_size
+        super().__init__(state_size, action_size, seed)
+
         self.seed = random.seed(seed)
 
         # Q-Network
@@ -40,8 +42,6 @@ class Agent():
 
         # Replay memory
         self.memory = ReplayBuffer(action_size, BUFFER_SIZE, BATCH_SIZE, seed)
-        # Initialize time step (for updating every UPDATE_EVERY steps)
-        self.t_step = 0
     
     def step(self, state, action, reward, next_state, done):
         # Save experience in replay memory
@@ -71,9 +71,9 @@ class Agent():
 
         # Epsilon-greedy action selection
         if random.random() > eps:
-            return np.argmax(action_values.cpu().data.numpy())
+            return int(np.argmax(action_values.cpu().data.numpy()))
         else:
-            return random.choice(np.arange(self.action_size))
+            return int(random.choice(np.arange(self.action_size)))
 
     def learn(self, experiences, gamma):
         """Update value parameters using given batch of experience tuples.
@@ -115,6 +115,12 @@ class Agent():
         """
         for target_param, local_param in zip(target_model.parameters(), local_model.parameters()):
             target_param.data.copy_(tau*local_param.data + (1.0-tau)*target_param.data)
+            
+    def save(self):
+        torch.save(self.qnetwork_local.state_dict(), 'checkpoint.pth')
+            
+    def load(self):
+        self.qnetwork_local.load_state_dict(torch.load('checkpoint.pth'))
 
 
 class ReplayBuffer:
