@@ -2,5 +2,8 @@
 Banana_Windows_x86_64
 unity-environment.log
 
+# Output files with results and images
+output/
+
 # Byte-compiled / optimized / DLL files
 __pycache__/

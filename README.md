@@ -45,7 +45,7 @@ This is a python project. In order to run it you will need follow these steps:
     - [Windows (64-bit)](https://s3-us-west-1.amazonaws.com/udacity-drlnd/P1/Banana/Banana_Windows_x86_64.zip)
 
 
-1. Change the `file_name` parameter within Navigation.ipynb to match the location of the Unity environment that you downloaded.
+1. Change the `file_name` parameter within main.py and Navigation.ipynb to match the location of the Unity environment that you downloaded.
 
     - **Mac**: `"path/to/Banana.app"`
     - **Windows** (x86): `"path/to/Banana_Windows_x86/Banana.exe"`
@@ -63,4 +63,4 @@ This is a python project. In order to run it you will need follow these steps:
 You are now ready to run the agent!
 
 ## Instructions
-In order to train the agent run the Notebook Navigation.ipynb
+In order to train the agent run jupyter notebook Navigation.ipynb. Alternatively you can run the python file main.py using F5 (debug) or CTRL + F5 (run without debugging). A Unity Environment application should start up. The python script connects to this environment and sends commands (turn left, right, forward, backwards) to the environment. You will see a sped up version of the game in order to make the training faster. The python file will train an agent. Depending on the machine it should take about 10-30 minutes. Afterwards the trained model of the agent is saved within 'checkpoint.pth' file.

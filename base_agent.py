@@ -6,7 +6,7 @@ from collections import namedtuple, deque
 class BaseAgent():
     """Interacts with and learns from the environment."""
 
-    def __init__(self, state_size, action_size, seed):
+    def __init__(self, state_size, action_size, seed, agent_configuration):
         """Initialize an Agent object.
         
         Params
@@ -18,6 +18,7 @@ class BaseAgent():
         self.state_size = state_size
         self.action_size = action_size
         self.seed = random.seed(seed)
+        self.agent_configuration = agent_configuration
 
         # Initialize time step (for updating every UPDATE_EVERY steps)
         self.t_step = 0
