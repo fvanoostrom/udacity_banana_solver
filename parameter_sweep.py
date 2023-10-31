@@ -130,8 +130,5 @@ plt.xlabel("Episode #")
 # plt.show()
 plt.savefig("output/" + name + ".png", bbox_inches='tight', dpi=600)
 
-
-
-
 # close the environment
 env.close()
