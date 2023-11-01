@@ -1,6 +1,6 @@
 [//]: # (Image References)
 
-[image1]: https://user-images.githubusercontent.com/10624937/42135619-d90f2f28-7d12-11e8-8823-82b970a54d7e.gif "Trained Agent"
+[image1]: results/trained_agent.gif "Trained Agent"
 
 # Banana Agent
 ## Project Details
@@ -8,13 +8,13 @@
 
 Within this project we will develop an agent that will navigate and pick up bananas within a square arena. This project is part of the Udacity Deep learning Program and is an adapted version of the Unity  [ML-Agents repository](https://github.com/Unity-Technologies/ml-agents).
 
-In the image below a trained agent within the environment is shown. The agent receives 37 inputs ("the state space is 37"), such as the velocity and ray-based perception of objects and has four possible actions (forward, backward, turn left, turn right). Whenever it touches a banana it will pick it up. When it picks up a yellow banana it will receive a reward of +1. Picking up a blue banana results in a reward of -1. It is thus the goal to pick up as many yellow bananas as possible while avoiding picking up blue bananas. 
+In the image belowathe final trained agent within the environment is shown. The agent receives 37 inputs ("the state space is 37"), such as the velocity and ray-based perception of objects and has four possible actions (forward, backward, turn left, turn right). Whenever it touches a banana it will pick it up. When it picks up a yellow banana it will receive a reward of +1. Picking up a blue banana results in a reward of -1. It is thus the goal to pick up as many yellow bananas as possible while avoiding picking up blue bananas. 
 
 ![Trained Agent][image1]
 
 ## Getting Started
 This is a python project. In order to run it you will need follow these steps:
-1. install Visual Studio Code or another python editor
+1. install Visual Studio Code or another python editor. In case you are running Visual Studio Code install an older version of the 'Python' extension (v2021.9.1246542782) since the Python 3.6 is no longer supported in more recent versions.
 1. Create (and activate) a new environment with Python 3.6.
 
 	- __Linux__ or __Mac__: 
@@ -63,4 +63,6 @@ This is a python project. In order to run it you will need follow these steps:
 You are now ready to run the agent!
 
 ## Instructions
-In order to train the agent run jupyter notebook Navigation.ipynb. Alternatively you can run the python file main.py using F5 (debug) or CTRL + F5 (run without debugging). A Unity Environment application should start up. The python script connects to this environment and sends commands (turn left, right, forward, backwards) to the environment. You will see a sped up version of the game in order to make the training faster. The python file will train an agent. Depending on the machine it should take about 10-30 minutes. Afterwards the trained model of the agent is saved within 'checkpoint.pth' file.
+In order to train the agent you can either run the jupyter notebook Navigation.ipynb or the python file main.py. Since python 3.6 is no longer supported Navigation.ipynb will only run in the Udacity environment, not run in visual studio code. You can run main.py will using F5 (debug) or CTRL + F5 (run without debugging). 
+
+A Unity Environment application should start up within Visual Studio Code. The Udacity environment cannot display the application. The python script connects to this environment and sends commands (turn left, right, forward, backwards) to the environment. You will see a sped up version of the game in order to make the training faster. The python file will train an agent. Depending on the machine it should take about 10-30 minutes. Afterwards the trained model of the agent is saved within 'model.pt' file. Moreover, the results, model and matplotlib-graph will be saved to the output folder.

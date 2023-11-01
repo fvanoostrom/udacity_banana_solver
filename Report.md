@@ -1,9 +1,10 @@
 [//]: # (Image References)
 
-[image1]: results/eps.png "Results tau gamma lr parameter sweeping"
-[image2]: results/buffersize_batchsize.png "Results tau gamma lr parameter sweeping"
-[image3]: results/hidden_layers.png "Results tau gamma lr parameter sweeping"
+[image1]: results/eps.png "Results eps"
+[image2]: results/buffersize_batchsize.png "Results buffer and batch size"
+[image3]: results/hidden_layers.png "Results hidden layers"
 [image4]: results/gamma_tau_lr.jpg "Results tau gamma lr parameter sweeping"
+[image5]: results/dqn_vs_double_dqn.png "Results dqn versus double dqn"
 
 Learning Algorithm
 
@@ -129,9 +130,12 @@ A gamma of 0.99, tau of 0.001 and learning rate of 5e-05 seem to be the best per
 - lr: 5e-05
  
 ## Double DQN versus DQN
-Finally Double DQN is compared to DQN. Each algorithm was ran three times with the optimal parameters found previously.
+Finally Double DQN is compared to DQN. Each algorithm was ran three times with the optimal parameters found previously. When looking at the graph the results of each of algorithm are quite consistent, with the double dqn algorithm clearly outperforming the algorithm with just one model. Furthermore, none of the double dqn runs come close to previous results. It took 529, 650 and 659 episodes to achieve an average score of over 14.0. While previously a result of 367 episodes was achieved. Simply combining the best hyperparamters might not lead to the best result.
+![double dqn compared to dqn][image5]
 
 
 
 # Ideas for Future Work 
-On a technical side, there is currently no prioritization applied when running or storing the memory with all the states. Prioritized 
+When looking at the trained agent is becomes clear that the agent prefers chasing small but more immediate rewards in the form of a single close banana instead of going to a further spot where multiple yellow bananas are in close proximity. This might be due to insufficient training, a gamma set too small or another cause. Further research is required to improve on this.
+
+On a technical side, there is currently no prioritization applied when running or storing the memory with all the states. Prioritized experience replay could improve the agent. 

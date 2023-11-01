@@ -11,12 +11,12 @@ from double_dqn_agent import DoubleDQNAgent
 agents ={"base": BaseAgent, "random": BaseAgent, "dqn": DQNAgent, "double_dqn": DoubleDQNAgent}
 
 configuration = {
-                "max_episodes" : 20,
+                "max_episodes" : 2000,
                 "max_time" : 300, 
                 "eps_start" : 1.0,
                 "eps_end" : 0.01,
                 "eps_decay" : 0.990,
-                "target_score" : 100.0,
+                "target_score" : 14.0,
                 "agent" : {
                         "type" : "double_dqn",
                         "buffer_size" : int(1e5),  # replay buffer size
@@ -43,6 +43,7 @@ scores = env.train(agent, configuration["max_episodes"], configuration["max_time
                 configuration["eps_start"], configuration["eps_end"], configuration["eps_decay"],
                 configuration["target_score"],)
 agent.save(path=model_path)
+agent.save(path='model.pt')
 
 end_date = datetime.now()
 duration = end_date - start_date
