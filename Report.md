@@ -18,12 +18,21 @@ Plot of Rewards
 The architecture used is based on the architecture of the LunarLander exercise. This is a Q-learning algorithm that uses deep learning to learn the right values. For this exercise both a regular and a double dqn network were used. In the latter one, an additional network is created that is used during the learning phase. This should reduce the overestimation of a value.
 
 The solution is structured in this way:
-- main.py
-- base_agent: a base class of an agent which performs random actions
-- double_dqn_agent: an agent with a double dqn architecture, based on the 
-- dqn_agent: an agent with a dqn architecture
+- main.py or navigation.ipynb: python scripts that runs the simulation
+- base_agent.py: a base class of an agent which performs random actions
+- double_dqn_agent.py: an agent with a double dqn architecture, based on the 
+- dqn_agent.py: an agent with a dqn architecture
+- dnn_model.py: a class with the 'brain' of the agent: an pytorch neural network
 
-- dnn_model: a class with the 'brain' of the agent, 
+Furthermore the solution consists of:
+- model.pt: the weights of the trained model
+- report.md: this report
+- README.md
+- play.py: python script to run a trained agent
+- parameter_sweep.py: python script that runs multiple generated configurations
+- plot.py: python script to plot a matplotlib graph
+- output folder: place where the scores, configuration and matplotlit graphs are stored
+- results folder: 
 
 # Trying out different configurations of hyperparameters
 There are a lot of parameters we can tweak in order to reach a good performing model as soon as possible. In order to learn which parameters work well we will try out different configurations. 
@@ -132,8 +141,6 @@ A gamma of 0.99, tau of 0.001 and learning rate of 5e-05 seem to be the best per
 ## Double DQN versus DQN
 Finally Double DQN is compared to DQN. Each algorithm was ran three times with the optimal parameters found previously. When looking at the graph the results of each of algorithm are quite consistent, with the double dqn algorithm clearly outperforming the algorithm with just one model. Furthermore, none of the double dqn runs come close to previous results. It took 529, 650 and 659 episodes to achieve an average score of over 14.0. While previously a result of 367 episodes was achieved. Simply combining the best hyperparamters might not lead to the best result.
 ![double dqn compared to dqn][image5]
-
-
 
 # Ideas for Future Work 
 When looking at the trained agent is becomes clear that the agent prefers chasing small but more immediate rewards in the form of a single close banana instead of going to a further spot where multiple yellow bananas are in close proximity. This might be due to insufficient training, a gamma set too small or another cause. Further research is required to improve on this.
